@@ -4,8 +4,8 @@ import ItemRow from "./ItemRow";
 class Itemlist extends Component {
   render() {
     return (
-      <div style={{ width: "100%" }}>
-        <table className="table table-bordered table-hover table-striped">
+      <div>
+        <table>
           <thead>
             <tr>
               <th scope="col">Instrument</th>

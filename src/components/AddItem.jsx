@@ -88,25 +88,17 @@ class AddItem extends React.Component {
   };
 
   render() {
-    const { errDetected, focus } = this.state;
+    const { focus } = this.state;
     return (
-      <form onSubmit={this.onSubmit} style={{ marginTop: "25px" }}>
-        <div className="input-group mb-3">
+      <form onSubmit={this.onSubmit}>
+        <div>
           <input
             type="text"
-            className="form-control"
-            aria-label="search"
-            aria-describedby="inputGroup-sizing-default"
             name="ticker"
             placeholder={focus ? "" : "Search Stock"}
             list="options"
             onChange={this.handleChange}
             required
-            style={{
-              backgroundColor: errDetected
-                ? "rgba(250, 150, 150, 0.5)"
-                : undefined
-            }}
             onFocus={this._onFocus}
             onBlur={this._onBlur}
             autoFocus
@@ -118,13 +110,8 @@ class AddItem extends React.Component {
               </option>
             ))}
           </datalist>
-          <div className="input-group-prepend">
-            <button
-              type="submit"
-              className=" btn btn-primary"
-              id="inputGroup-sizing-default"
-              disabled={this.state.isDisabled}
-            >
+          <div>
+            <button type="submit" disabled={this.state.isDisabled}>
               Add
             </button>
           </div>

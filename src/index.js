@@ -1,12 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 // import App from "./components/App2";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import "bootstrap/dist/css/bootstrap.css";
-// eslint-disable-next-line
-import bootstrap from "bootstrap";
 
 ReactDOM.render(<App />, document.getElementById("root"));
 

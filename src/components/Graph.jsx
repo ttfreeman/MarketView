@@ -7,32 +7,11 @@ class Graph extends Component {
   render() {
     return (
       <div>
-        <h2 className="card-header">
-          <span className="badge badge-secondary">
-            {this.props.selectedTicker}
-          </span>
+        <h2>
+          <span>{this.props.selectedTicker}</span>
         </h2>
-        <div className="card">
-          <div className="card-header">
-            <ul className="nav nav-tabs card-header-tabs">
-              <li className="nav-item">
-                <a className="nav-link active" data-toggle="tab" href="/">
-                  Price
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" data-toggle="tab" href="/">
-                  Volatility
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled" data-toggle="tab" href="/">
-                  Disabled
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="card-body">
+        <div>
+          <div>
             <Chart
               width={"600px"}
               height={"400px"}

@@ -11,12 +11,7 @@ const ItemRow = props => (
     <th>{props.ticker.name}</th>
     <td>{props.ticker.price}</td>
     <td />
-    <td
-      className="btn btn-danger"
-      onClick={() => props.onDelete(props.ticker.id)}
-    >
-      X
-    </td>
+    <td onClick={() => props.onDelete(props.ticker.id)}>X</td>
   </tr>
 );
 

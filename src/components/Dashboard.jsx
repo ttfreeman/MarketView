@@ -18,7 +18,7 @@ class Dashboard extends Component {
     data: []
   };
 
-  componentWillMount() {
+  componentDidMount() {
     // tickersRef.push({ name: "IWM", price: 280, description: "" });
     // tickersRef.push({ name: "QQQ", price: 75, description: "" });
     // tickersRef.push({ name: "AAPL", price: 25000, description: "" });
@@ -57,9 +57,9 @@ class Dashboard extends Component {
   render() {
     return (
       <main>
-        <div className="container">
-          <div className="row">
-            <div className="col-sm">
+        <div>
+          <div>
+            <div>
               <AddItem
                 tickers={this.state.tickers}
                 onSelect={this.handleSelect}
@@ -72,7 +72,7 @@ class Dashboard extends Component {
                 selectedTicker={this.state.selectedTicker}
               />
             </div>
-            <div className="col-sm">
+            <div>
               <Graph
                 selectedTicker={this.state.selectedTicker}
                 data={this.state.data}
