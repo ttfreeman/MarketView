@@ -30,30 +30,40 @@ class LoginPage extends Component {
   };
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleLogin}>
-          <h1>Please sign in</h1>
-          <label>Email address</label>
-          <input
-            type="email"
-            placeholder="Email address"
-            required=""
-            autoFocus
-            value={this.state.email}
-            onChange={this.handleChangeEmail}
-          />
-          <label className="sr-only">Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            required=""
-            value={this.state.password}
-            onChange={this.handleChangePassword}
-          />
-          <p style={{ color: "red" }}>{this.state.error}</p>
+      <div className="box-layout">
+        <div className="box-layout__box">
+          <h1 className="box-layout__title">Volatility View</h1>
+          <p>It's time to get your investment under control.</p>
+          <form onSubmit={this.handleLogin}>
+            <div>
+              <label htmlFor="inputEmail">Email address</label>
+              <input
+                type="email"
+                placeholder="Email address"
+                id="inputEmail"
+                required=""
+                autoFocus
+                value={this.state.email}
+                onChange={this.handleChangeEmail}
+              />
+            </div>
+            <div>
+              <label htmlFor="inputPassword">Password</label>
+              <input
+                type="password"
+                placeholder="Password"
+                id="inputPassword"
+                required=""
+                value={this.state.password}
+                onChange={this.handleChangePassword}
+              />
+            </div>
 
-          <button type="submit">Sign in</button>
-        </form>
+            <p>{this.state.error}</p>
+
+            <button type="submit">Sign in</button>
+          </form>
+        </div>
       </div>
     );
   }

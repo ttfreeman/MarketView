@@ -9,8 +9,8 @@ import Header from "./components/Header";
 import LoginPage from "./components/LoginPage";
 
 const AppRouter = () => (
-  <BrowserRouter style={{ justifyContent: "flex-end" }}>
-    <div style={{ justifyContent: "flex-end" }}>
+  <BrowserRouter>
+    <div>
       <Header />
       <Switch>
         <Route path="/" component={Dashboard} exact={true} />
