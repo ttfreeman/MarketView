@@ -1,0 +1,12 @@
+.content-container {
+  margin: 0 auto;
+  padding: 0 $m-size;
+  max-width: 100rem;
+}
+
+.content-container__dashboard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}

@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 import firebase from "./../firebase";
+import { Redirect } from "react-router-dom";
 
 class LoginPage extends Component {
-  state = { email: "", password: "", error: "" };
+  state = {
+    email: "",
+    password: "",
+    error: "",
+    loading: false,
+    isLoggedIn: false
+  };
 
   handleLogin = e => {
     e.preventDefault();
@@ -11,13 +18,13 @@ class LoginPage extends Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then(this.onLoginSuccess())
       .catch(() => {
         firebase
           .auth()
           .createUserWithEmailAndPassword(email, password)
-          .catch(() => {
-            this.setState({ error: "Authentication Failed!" });
-          });
+          .then(this.onLoginSuccess())
+          .catch(this.onLoginFailure());
       });
   };
   handleChangeEmail = event => {
@@ -28,7 +35,36 @@ class LoginPage extends Component {
     const password = event.target.value;
     this.setState({ password });
   };
-  render() {
+  onLoginSuccess() {
+    this.setState({
+      email: "",
+      password: "",
+      loading: false,
+      error: "",
+      isLoggedIn: true
+    });
+    console.log("youre logged in now");
+  }
+  onLoginFailure() {
+    this.setState({ loading: false, error: "Authentication Failed!" });
+  }
+
+  renderContent() {
+    const location = {
+      pathname: "/dashboard",
+      state: { fromLogIn: true }
+    };
+    if (this.state.isLoggedIn) {
+      return (
+        <div>
+          <button
+            onClick={() => firebase.auth().signOut()}
+          >{`Log Out: this.state.isLoggedIn=${this.state.isLoggedIn}`}</button>
+
+          <Redirect to={location} />
+        </div>
+      );
+    }
     return (
       <div className="box-layout">
         <div className="box-layout__box">
@@ -61,11 +97,17 @@ class LoginPage extends Component {
 
             <p>{this.state.error}</p>
 
-            <button type="submit">Sign in</button>
+            <button type="submit" className="login-button">
+              Log in
+            </button>
           </form>
         </div>
       </div>
     );
+  }
+
+  render() {
+    return <div>{this.renderContent()}</div>;
   }
 }
 

@@ -1,37 +1,40 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 class Header extends Component {
   state = {};
   render() {
     return (
-      <header>
-        <div>
-          VolatilityView
-          <div>
-            <ul>
+      <header className="header">
+        <div className="content-container">
+          <div className="header-content">
+            <h1 className="header__brand">VolatilityView</h1>
+            <ul className="header__nav-content">
               <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard" exact={true}>
-                  Dashboard
+                <NavLink to="/" activeClassName="header__nav-content__active">
+                  Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/d3dash">D3-Dash</NavLink>
+                <NavLink
+                  to="/dashboard"
+                  activeClassName="header__nav-content__active"
+                >
+                  Dashboard
+                </NavLink>
               </li>
-              <li>
-                <NavLink to="/analysis/:id">Analysis</NavLink>
-              </li>
+
+              <NavLink
+                to="/analysis"
+                activeClassName="header__nav-content__active"
+              >
+                Analysis
+              </NavLink>
             </ul>
+            <h5>
+              <Link to="/login">Log in</Link>
+            </h5>
           </div>
-          >
-          <ul>
-            <li>
-              <NavLink to="/login">Sign in</NavLink>
-            </li>
-          </ul>
         </div>
       </header>
     );

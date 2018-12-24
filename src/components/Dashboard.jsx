@@ -22,7 +22,6 @@ class Dashboard extends Component {
     // tickersRef.push({ name: "IWM", price: 280, description: "" });
     // tickersRef.push({ name: "QQQ", price: 75, description: "" });
     // tickersRef.push({ name: "AAPL", price: 25000, description: "" });
-
     tickersRef.on("value", snap => {
       const tickers = [];
       snap.forEach(childsnap => {
@@ -57,8 +56,8 @@ class Dashboard extends Component {
   render() {
     return (
       <main>
-        <div>
-          <div>
+        <div className="content-container">
+          <div className="content-container__dashboard ">
             <div>
               <AddItem
                 tickers={this.state.tickers}

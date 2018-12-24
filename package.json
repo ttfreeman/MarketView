@@ -11,6 +11,7 @@
     "node-sass": "^4.10.0",
     "popper.js": "^1.14.5",
     "react": "^16.6.1",
+    "react-component-hierarchy": "^1.1.0",
     "react-dom": "^16.6.1",
     "react-google-charts": "^3.0.10",
     "react-router-dom": "^4.3.1",

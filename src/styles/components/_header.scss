@@ -1,0 +1,28 @@
+.header {
+  // height: 5rem;
+  background-color: $m-dark-blue;
+  background-position: top;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header__brand {
+  margin: auto 0;
+  font-weight: 300;
+}
+
+.header__nav-content {
+  color: $dirty;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: $s-size 0;
+}
+.header__nav-content__active {
+  font-weight: bolder;
+}
