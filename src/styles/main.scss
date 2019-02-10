@@ -1,7 +1,9 @@
 @import "./base/settings";
 @import "./base/base";
+@import "./base/animations";
+@import "./base/utilities";
 @import "./components/box-layout";
 @import "./components/button";
 @import "./components/header";
 @import "./components/content-container";
-@import "./components/homepage";
+@import "./pages/homepage";
