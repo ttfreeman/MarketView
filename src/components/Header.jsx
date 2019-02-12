@@ -10,9 +10,11 @@ class Header extends Component {
         style={{ height: "50px" }}
       >
         <div className="container">
-          <Link className="navbar-brand col-sm-3 col-md-2 mr-0" to="/">
-            MarketView
+
+          <Link className="navbar-brand" to="/">
+          <button style={{color: "#343a40", fontWeight: "bolder", fontSize: "1.5rem", margin: "0.9rem"}}>MarketView</button>
           </Link>
+
           <div className="navbar-nav-scroll">
             <ul className="navbar-nav bd-navbar-nav flex-row">
               <li className="nav-item">

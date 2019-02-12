@@ -12,7 +12,7 @@ class Itemlist extends Component {
               <th scope="col">Last</th>
               <th scope="col">Change</th>
               <th scope="col">Change(%)</th>
-              <th scope="col">Volume</th>
+              <th scope="col">Volume(M)</th>
             </tr>
           </thead>
           <tbody>
