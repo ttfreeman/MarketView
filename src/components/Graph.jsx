@@ -7,13 +7,13 @@ class Graph extends Component {
   render() {
     return (
       <div>
-        <h2 className="card-header">
+        <h2 className="card-header text-center">
           <span className="badge badge-secondary">
             {this.props.selectedTicker}
           </span>
         </h2>
         <div className="card">
-          <div className="card-header">
+          <div className="card-header text-center">
             <ul className="nav nav-tabs card-header-tabs">
               <li className="nav-item">
                 <a className="nav-link active" data-toggle="tab" href="/">
@@ -21,13 +21,8 @@ class Graph extends Component {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" data-toggle="tab" href="/">
-                  Volatility
-                </a>
-              </li>
-              <li className="nav-item">
                 <a className="nav-link disabled" data-toggle="tab" href="/">
-                  Disabled
+                  Implied Volatility
                 </a>
               </li>
             </ul>
@@ -40,7 +35,6 @@ class Graph extends Component {
               loader={<div>Loading Chart</div>}
               data={[["t", "p"], ...this.props.data]}
               options={{
-                title: this.props.selectedTicker,
                 titleTextStyle: {
                   color: "blue",
                   fontSize: 20,

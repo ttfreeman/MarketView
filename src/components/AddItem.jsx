@@ -55,7 +55,8 @@ class AddItem extends React.Component {
         this.props.onSelect(newTicker);
       }, 0);
       e.target.elements.ticker.placeholder = "Search Stock";
-    } else {
+    }
+    else {
       this.setState({ inputErr: true });
       e.target.elements.ticker.placeholder = `${newTicker} is already in the watchlist!`;
       this.setState({ selectedOption: newTicker, options: [] });
@@ -68,8 +69,6 @@ class AddItem extends React.Component {
   handleAddItem = ticker => {
     const newTickerObj = {
       name: ticker,
-      price: "working on it",
-      description: ""
     };
     tickersRef.push(newTickerObj);
     this.props.onSelect(ticker);

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import firebase from "./../firebase";
 import Itemlist from "./Itemlist";
 import Graph from "./Graph";
-import Notes from "./Notes";
 import AddItem from "./AddItem";
 import * as getApiData from "./../api/getData";
 
@@ -11,34 +10,55 @@ const tickersRef = firebase
   .ref()
   .child("react/tickers");
 
-class Dashboard extends Component {
+class Stocks extends Component {
   state = {
     tickers: [],
     selectedTicker: "",
-    data: []
+    data: [],
+    dataFetchErr: ""
   };
 
-  componentWillMount() {
-    // tickersRef.push({ name: "IWM", price: 280, description: "" });
-    // tickersRef.push({ name: "QQQ", price: 75, description: "" });
-    // tickersRef.push({ name: "AAPL", price: 25000, description: "" });
-
+  componentDidMount() {
     tickersRef.on("value", snap => {
-      const tickers = [];
+      let tickers = [];
       snap.forEach(childsnap => {
         tickers.push({
           id: childsnap.key,
           ...childsnap.val()
         });
+
       });
-      this.setState({
-        tickers
-      });
-      const selectedTicker = tickers[0].name;
-      this.setState({ selectedTicker });
-      getApiData.getDailyData(selectedTicker).then(res => {
-        this.setState({ data: res });
-      });
+
+      const getMultipleQuotes = tickers => {
+        const promiseArray = tickers.map(getApiData.getSingleQuote);
+        Promise.all(promiseArray).then(data => {
+          data.forEach((element, index) => {
+            tickers[index].price = element["05. price"]
+            tickers[index].volume = element["06. volume"]
+            tickers[index].change = element["09. change"]
+            tickers[index].changePercent = element["10. change percent"]
+          })
+          this.setState({
+            tickers
+          });
+        }).catch(err => {
+          console.log(err)
+          this.setState({
+            dataFetchErr: err.message
+          });
+        })
+      }
+
+      getMultipleQuotes(tickers)
+
+      if (tickers.length > 0) {
+        const selectedTicker = tickers[0].name;
+        this.setState({ selectedTicker });
+        getApiData.getDailyData(selectedTicker).then(res => {
+          this.setState({ data: res });
+        });
+      }
+
     });
   }
 
@@ -70,6 +90,7 @@ class Dashboard extends Component {
                 onDelete={this.handleDelete}
                 onSelect={this.handleSelect}
                 selectedTicker={this.state.selectedTicker}
+                dataFetchErr={this.state.dataFetchErr}
               />
             </div>
             <div className="col-sm">
@@ -85,4 +106,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default Stocks;

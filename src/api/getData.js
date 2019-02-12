@@ -43,3 +43,19 @@ export const getTickers = keyword => {
       console.log(`Error retrieving data for keyword=${keyword}`);
     });
 };
+
+export const getSingleQuote = ticker => {
+  return axios
+    .get(
+      `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker.name}&apikey=52MOSGPL8EU13TQI`
+    )
+    .then(response => {
+      let quote = response.data["Global Quote"]
+
+      return quote;
+    })
+    .catch(e => {
+      console.log(`Error retrieving data for keyword=${ticker.name}`);
+    });
+
+};

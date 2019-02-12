@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
+import Stocks from "./components/Stocks";
 // import D3Dash from "./components/D3Dash";
 // import AnalysisPage from "./components/AnalysisPage";
 import HelpPage from "./components/HelpPage";
@@ -13,8 +13,8 @@ const AppRouter = () => (
     <div style={{ justifyContent: "flex-end" }}>
       <Header />
       <Switch>
-        <Route path="/" component={Dashboard} exact={true} />
-        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/" component={Stocks} exact={true} />
+        <Route path="/stocks" component={Stocks} />
         {/* <Route path="/d3dash" component={D3Dash} /> */}
         {/* <Route path="/analysis/:id" component={AnalysisPage} /> */}
         <Route path="/help" component={HelpPage} />

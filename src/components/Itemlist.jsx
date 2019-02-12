@@ -11,6 +11,8 @@ class Itemlist extends Component {
               <th scope="col">Instrument</th>
               <th scope="col">Last</th>
               <th scope="col">Change</th>
+              <th scope="col">Change(%)</th>
+              <th scope="col">Volume</th>
             </tr>
           </thead>
           <tbody>

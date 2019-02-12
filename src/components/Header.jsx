@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 class Header extends Component {
   state = {};
@@ -10,33 +10,28 @@ class Header extends Component {
         style={{ height: "50px" }}
       >
         <div className="container">
-          <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="/">
-            VolatilityView
-          </a>
+          <Link className="navbar-brand col-sm-3 col-md-2 mr-0" to="/">
+            MarketView
+          </Link>
           <div className="navbar-nav-scroll">
             <ul className="navbar-nav bd-navbar-nav flex-row">
               <li className="nav-item">
-                <NavLink to="/" className="nav-link">
-                  Home
-                </NavLink>
-              </li>
-              <li className="nav-item">
                 <NavLink
-                  to="/dashboard"
+                  to="/stocks"
                   className="nav-link active"
                   exact={true}
                 >
-                  Dashboard
+                  Stocks
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/d3dash" className="nav-link">
-                  D3-Dash
+              <li className="nav-item disabled">
+                <NavLink to="#" className="nav-link">
+                  Forex
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/analysis/:id" className="nav-link">
-                  Analysis
+              <li className="nav-item disabled">
+                <NavLink to="#" className="nav-link">
+                  Commodities
                 </NavLink>
               </li>
             </ul>
@@ -44,7 +39,7 @@ class Header extends Component {
           >
           <ul className="navbar-nav ml-auto">
             <li className="nav-item text-nowrap">
-              <NavLink to="/login" className="nav-link">
+              <NavLink to="#" className="nav-link">
                 Sign in
               </NavLink>
             </li>
